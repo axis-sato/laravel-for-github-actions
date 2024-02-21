@@ -1,0 +1,21 @@
+name: Close inactive issues and pull requests
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+
+jobs:
+  close-issues-and-prs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-issue-stale: 30
+          ays-before-issue-close: 14
+          stale-issue-label: "stale"
+          stale-issue-message: "このIssueは30日間動きがありません。"
+          close-issue-message: "このIssueはstaleがラベリングされてから14日間経過したのでcloseしました。"
+          days-before-pr-stale: 30
+          days-before-pr-close: -1
+          stale-pr-message: "このプルリクエストは30日間動きがありません。"
+          stale-pr-label: "stale"

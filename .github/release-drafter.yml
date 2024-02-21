@@ -1,0 +1,39 @@
+name-template: "v$RESOLVED_VERSION 🌈"
+tag-template: "v$RESOLVED_VERSION"
+categories:
+  - title: "🚀 新規実装"
+    labels:
+      - 新規実装
+  - title: "🐛 不具合修正"
+    labels:
+      - 不具合
+  - title: "✨ 改善"
+    labels:
+      - 改善
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&'
+version-resolver:
+  major:
+    labels:
+      - "メジャーアップデート"
+  minor:
+    labels:
+      - "マイナーアップデート"
+  patch:
+    labels:
+      - "パッチアップデート"
+  default: patch
+template: |
+  ## 変更点
+
+  $CHANGES
+
+autolabeler:
+  - label: "新規実装"
+    branch:
+      - "/^feat/i"
+      - "/^feature/i"
+  - label: "不具合"
+    branch:
+      - "/^fix/"
+  
