@@ -6,7 +6,7 @@ jobs:
   set-value:
     runs-on: ubuntu-latest
     outputs:
-      value: ${{ steps.set.outputs.value }}
+      value: ${{steps.set.outputs.value}}
     steps:
       - name: set
         run: echo "value=hi" >> "$GITHUB_OUTPUT"
@@ -15,4 +15,4 @@ jobs:
     needs: set-value
     steps:
       - name: use
-        run: echo "{{ needs.set-value.outputs.value }}"
+        run: echo "${{needs.set-value.outputs.value}}"
