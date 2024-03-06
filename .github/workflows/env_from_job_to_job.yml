@@ -6,14 +6,12 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      value1: ${{ steps.set_outputs.outputs.value1 }}
-      value2: ${{ steps.set_outputs.outputs.value2 }}
+      value: ${{ steps.set_outputs.outputs.value }}
     steps:
       - id: set_outputs
         name: Set outputs
         run: |
-          echo "value1=hi" >> $GITHUB_OUTPUT
-          echo "value2=hello" >> $GITHUB_OUTPUT
+          echo "value=hi" >> $GITHUB_OUTPUT
 
   job2:
     runs-on: ubuntu-latest
@@ -21,5 +19,4 @@ jobs:
     steps:
       - name: Use outputs
         run: |
-          echo "value1: ${{ needs.job1.outputs.value1 }}"
-          echo "value2: ${{ needs.job1.outputs.value2 }}"
+          echo "value: ${{ needs.job1.outputs.value }}"
