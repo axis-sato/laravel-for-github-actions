@@ -1,0 +1,12 @@
+name: Environment variables from step to step
+
+on: workflow_dispatch
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set value
+        run: echo "value=hi" >> "$GITHUB_ENV"
+      - name: Use value
+        run: echo "$value"
