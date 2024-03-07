@@ -1,0 +1,16 @@
+name: Environment variables Test
+
+on: workflow_dispatch
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set value
+        run: |
+          echo "$value"
+          value="hello"
+          echo "ランナー環境変数: $value"
+          echo "コンテキスト: ${{ env.value }}"
+        env:
+          value: hi
